@@ -46,8 +46,16 @@ def get_matches(mkv_file, mkv_path, font_list):
             matches = pattern.findall(font_list[j])
             if matches:
                 mkv.add_attachment(font_list[j])
-                mkv.mux(output_folder + "\{}.mkv".format(mkv_file_name()[i]))
+        mkv.mux(output_folder + "\{}.mkv".format(mkv_file_name()[i]))
+                
+def get_matches_debug(mkv_file, mkv_path, font_list):
+    for i in mkv_file:
+        print(i)
+    for i in mkv_path:
+        print(i)
+    for i in font_list:
+        print(i)
 
 get_matches(mkv_file_name(), mkv_path_list(), fonts_list())
 
-print("DONE")
+print("Done")
