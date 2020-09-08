@@ -35,7 +35,7 @@ def fonts_list():
     font_list = []
     for root, dirnames, filenames in os.walk(parent_folder):
         for filename in filenames:
-            if filename.endswith('ttf') or filename.endswith('otf'):
+            if filename.lower().endswith('ttf') or filename.lower().endswith('otf'):
                 font_list.append(os.path.join(root, filename))
     return font_list
 
@@ -46,6 +46,7 @@ def get_matches(mkv_file, mkv_path, font_list):
     for i in range(len(mkv_file)):
         pattern = re.compile(mkv_file[i])
         mkv = MKVFile(mkv_path[i])
+        #mkv.no_attachments()
         for j in range(len(font_list)):
             matches = pattern.findall(font_list[j])
             if matches:
