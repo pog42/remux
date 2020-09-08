@@ -20,8 +20,9 @@ def mkv_path_list():
 def mkv_file_name():
     mkv_file = []
     for root, dirnames, filenames in os.walk(parent_folder):
-        mkv_file.extend(filenames)
-        break
+        for filename in filenames:
+            if filename.endswith('.mkv'):
+                mkv_file.append(filename)           
     clean_mkv = []
     for file in mkv_file:
         replaced = file.replace('.mkv', '')
